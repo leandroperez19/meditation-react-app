@@ -80,10 +80,13 @@ const Meditate = () => {
 
     useEffect(() => {
         return () => {
-            setSecondsRemaining(10);
             audioSound?.unloadAsync();
         };
     }, [audioSound]);
+
+    useEffect(() => {
+        return () => setSecondsRemaining(10);
+    }, []);
 
     return (
         <View className="flex-1">
