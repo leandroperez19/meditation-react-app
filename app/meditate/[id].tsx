@@ -24,6 +24,7 @@ const Meditate = () => {
 
         if (secondsRemaining === 0) {
             setMeditating(false);
+
             return;
         }
 
@@ -83,6 +84,13 @@ const Meditate = () => {
             audioSound?.unloadAsync();
         };
     }, [audioSound]);
+
+    useEffect(() => {
+        if (secondsRemaining === 0) {
+            togglePlayPause();
+            initializeSound();
+        }
+    }, [secondsRemaining]);
 
     useEffect(() => {
         return () => setSecondsRemaining(10);
